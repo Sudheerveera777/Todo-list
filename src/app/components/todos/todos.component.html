@@ -5,5 +5,5 @@
   <label for="showCompleted">Show completed Todos</label>
 </div>
 <ul>
-  <li *ngFor="let todo of allTodos | userTodosFilter:currentUser.id:isCompletedChecked">{{todo.title}}<img *ngIf="todo.completed" src="assets/check-mark.svg"></li>
+  <li *ngFor="let todo of allTodos | userTodosFilter:currentUser.id:isCompletedChecked">{{todo.title}}<img *ngIf="todo.completed" src="../../../assets/check-mark.svg"></li>
 </ul>

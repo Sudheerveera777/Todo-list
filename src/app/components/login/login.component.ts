@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from "@angular/forms";
-import users from '../mock-data/users-response.json';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import users from '../../mock-data/users-response.json';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,16 +17,16 @@ export class LoginComponent implements OnInit {
   userValidity = {
     invalid: false,
     message: ''
-  }
+  };
   constructor(private router: Router) {}
 
-  get formControls() { return this.loginForm.controls; }
+  get formControls(): any { return this.loginForm.controls; }
 
-  checkUserExistence(currentUser, allUsers) {
+  checkUserExistence(currentUser, allUsers): any {
     let loggedInUserData = false;
     allUsers.some(user => {
-      let userFound = user.username === currentUser;
-      if(userFound) {
+      const userFound: boolean = user.username === currentUser;
+      if (userFound) {
         loggedInUserData = user;
       }
       return userFound;
@@ -34,17 +34,17 @@ export class LoginComponent implements OnInit {
     return loggedInUserData;
   }
 
-  handleLoginError(show) {
+  handleLoginError(show): void {
     this.userValidity.invalid = show;
     this.userValidity.message = show ? `No user with username '${this.loginForm.value.username}' was found.` : '';
   }
 
   loginUser(): void {
-    if(this.loginForm.valid) {
-      let loggedInUserData = this.checkUserExistence(this.loginForm.value.username, users);
-      if(loggedInUserData) {
+    if (this.loginForm.valid) {
+      const loggedInUserData = this.checkUserExistence(this.loginForm.value.username, users);
+      if (loggedInUserData) {
         this.handleLoginError(false);
-        sessionStorage.setItem('currentUser', JSON.stringify({id: loggedInUserData['id'], name: loggedInUserData['name']}));
+        sessionStorage.setItem('currentUser', JSON.stringify({id: loggedInUserData?.id, name: loggedInUserData?.name}));
         this.router.navigateByUrl('/todos');
       } else {
         this.handleLoginError(true);

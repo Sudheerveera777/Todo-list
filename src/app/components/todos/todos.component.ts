@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import todos from '../mock-data/todos-respone.json';
+import todos from '../../mock-data/todos-respone.json';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ export class TodosComponent implements OnInit {
 
   currentUser: any = {};
   allTodos = todos;
-  isCompletedChecked: boolean = false;
+  isCompletedChecked = false;
   constructor(private router: Router) { }
 
 

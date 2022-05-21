@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from "./login/login.component";
-import { TodosComponent } from "./todos/todos.component";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { AuthGuard } from "./auth.guard";
+import { LoginComponent } from './components/login/login.component';
+import { TodosComponent } from './components/todos/todos.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthGuard } from './guards/auth.guard';
+import { LoginGuard } from './guards/login.guard';
+
 import { UserTodosFilterPipe } from './pipes/user-todos-filter.pipe';
 
 @NgModule({
@@ -22,7 +24,7 @@ import { UserTodosFilterPipe } from './pipes/user-todos-filter.pipe';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, LoginGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
