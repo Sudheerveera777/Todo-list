@@ -1,0 +1,25 @@
+<h1>Todo Application</h1>
+<div class="login-wrapper">
+  <h2>Login</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="loginUser()" novalidate autocomplete="off">
+    <div class="login-error" *ngIf="userValidity.invalid">{{userValidity.message}}</div>
+    <label for="username">Username<span class="required-icon">&#42;</span></label>
+    <input type="text" name="username" id="username" formControlName="username"/>
+    <div class="error-wrapper" *ngIf="formControls.username?.invalid && (formControls.username?.dirty || formControls.username?.touched)">
+      <div [hidden]="!formControls.username?.errors?.required">
+        Username is required
+      </div>
+    </div>
+    <label for="password">Password<span class="required-icon">&#42;</span></label>
+    <input type="password" name="password" id="password" formControlName="password"/>
+    <div class="error-wrapper" *ngIf="formControls.password?.invalid && (formControls.password?.dirty || formControls.password?.touched)">
+      <div [hidden]="!formControls.password.errors?.required">
+        Password is required
+      </div>
+      <div [hidden]="!formControls.password.errors?.minlength">
+        Must have a minimum length of 6 characters
+      </div>
+    </div>
+    <button [disabled]="loginForm.invalid" type="submit">Login</button>
+  </form>
+</div>

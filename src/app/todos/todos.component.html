@@ -1,0 +1,9 @@
+<h1>{{currentUser.name}}'s Todo List<button (click)="logoutUser()">Logout</button></h1>
+<div class="completed-btn-wrapper">
+  <input type="checkbox" id="showCompleted" [(ngModel)]="isCompletedChecked">
+  <span class="checkmark"></span>
+  <label for="showCompleted">Show completed Todos</label>
+</div>
+<ul>
+  <li *ngFor="let todo of allTodos | userTodosFilter:currentUser.id:isCompletedChecked">{{todo.title}}<img *ngIf="todo.completed" src="assets/check-mark.svg"></li>
+</ul>
