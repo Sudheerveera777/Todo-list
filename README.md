@@ -1,4 +1,4 @@
-# INMARCodeTest
+# Todo list
 
 This project was generated with [Node] version 10.22.1 and [Angular CLI](https://github.com/angular/angular-cli) version 10.2.4.
 
